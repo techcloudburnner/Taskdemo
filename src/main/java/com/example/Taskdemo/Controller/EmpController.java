@@ -34,7 +34,6 @@ public class EmpController {
         emp.setEmail(email);
         emp.setPhone(phone);
 
-        // ✅ save image file if present
         if (image != null && !image.isEmpty()) {
             try {
                 String uploadDir = "Images/";
@@ -45,7 +44,6 @@ public class EmpController {
                 Path filePath = Paths.get(uploadDir + fileName);
                 Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
-                // set path (so React can access at http://localhost:8085/uploads/filename)
                 emp.setImage("/Images/" + fileName);
             } catch (IOException e) {
                 e.printStackTrace();
